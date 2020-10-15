@@ -1,8 +1,9 @@
 package com.pinyougou.mapper;
 
+import java.util.List;
+
 import com.pinyougou.pojo.TbContent;
 import com.pinyougou.pojo.TbContentExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TbContentMapper {

@@ -1,8 +1,9 @@
 package com.pinyougou.mapper;
 
+import java.util.List;
+
 import com.pinyougou.pojo.TbSeller;
 import com.pinyougou.pojo.TbSellerExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TbSellerMapper {
