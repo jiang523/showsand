@@ -2,6 +2,7 @@ package com.pinyougou.mapper;
 
 import java.util.List;
 
+import com.pinyougou.pojo.TbSpecification;
 import com.pinyougou.pojo.TbSpecificationOption;
 import com.pinyougou.pojo.TbSpecificationOptionExample;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,6 @@ public interface TbSpecificationOptionMapper {
     int updateByPrimaryKeySelective(TbSpecificationOption record);
 
     int updateByPrimaryKey(TbSpecificationOption record);
+
+
 }

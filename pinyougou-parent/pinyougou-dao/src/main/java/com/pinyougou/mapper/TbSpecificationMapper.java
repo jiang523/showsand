@@ -1,6 +1,7 @@
 package com.pinyougou.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.pinyougou.pojo.TbSpecification;
 import com.pinyougou.pojo.TbSpecificationExample;
@@ -28,4 +29,10 @@ public interface TbSpecificationMapper {
     int updateByPrimaryKeySelective(TbSpecification record);
 
     int updateByPrimaryKey(TbSpecification record);
+
+    /**
+     *
+     * @return
+     */
+    List<Map> selectSpecificationList();
 }
