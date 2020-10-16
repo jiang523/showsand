@@ -7,8 +7,8 @@
   </parent>
   <artifactId>pinyougou-shop-web</artifactId>
   <packaging>war</packaging>
-  
-  
+
+
    <dependencies>
     <!-- Spring -->
 	<dependency>
@@ -74,15 +74,27 @@
 	</dependency>
 	<dependency>
 		<groupId>javax.servlet</groupId>
-		<artifactId>servlet-api</artifactId>		
+		<artifactId>servlet-api</artifactId>
 		<scope>provided</scope>
 	</dependency>
-  
+
+	   <dependency>
+		   <groupId>com.pinyougou</groupId>
+		   <artifactId>pinyougou-pojo</artifactId>
+		   <version>0.0.1-SNAPSHOT</version>
+	   </dependency>
+
+	   <dependency>
+		   <groupId>com.pinyougou</groupId>
+		   <artifactId>pinyougou-sellergoods-interface</artifactId>
+		   <version>0.0.1-SNAPSHOT</version>
+	   </dependency>
+
 
   </dependencies>
-  
-  
-    <build>  
+
+
+    <build>
 	  <plugins>
 	      <plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
@@ -95,8 +107,8 @@
 					<path>/</path>
 				</configuration>
 	  	  </plugin>
-	  </plugins>  
+	  </plugins>
     </build>
-  
-  
+
+
 </project>
