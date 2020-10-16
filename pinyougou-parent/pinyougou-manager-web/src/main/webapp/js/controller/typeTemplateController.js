@@ -1,7 +1,7 @@
- //控制层
-app.controller('typeTemplateController' ,function($scope,$controller,typeTemplateService,brandService,specificationService){
+//控制层
+app.controller('typeTemplateController' ,function($scope,$controller,brandService ,specificationService  ,typeTemplateService){
 
-	$controller('baseController',{$scope:$scope});
+	$controller('baseController',{$scope:$scope});//继承
 
     //读取列表数据绑定到表单中
 	$scope.findAll=function(){
@@ -27,6 +27,12 @@ app.controller('typeTemplateController' ,function($scope,$controller,typeTemplat
 		typeTemplateService.findOne(id).success(
 			function(response){
 				$scope.entity= response;
+				// eval()   JSON.parse();
+				$scope.entity.brandIds = JSON.parse($scope.entity.brandIds);
+
+				$scope.entity.specIds = JSON.parse($scope.entity.specIds);
+
+				$scope.entity.customAttributeItems = JSON.parse($scope.entity.customAttributeItems);
 			}
 		);
 	}
@@ -41,7 +47,7 @@ app.controller('typeTemplateController' ,function($scope,$controller,typeTemplat
 		}
 		serviceObject.success(
 			function(response){
-				if(response.success){
+				if(response.flag){
 					//重新查询
 		        	$scope.reloadList();//重新加载
 				}else{
@@ -57,9 +63,9 @@ app.controller('typeTemplateController' ,function($scope,$controller,typeTemplat
 		//获取选中的复选框
 		typeTemplateService.dele( $scope.selectIds ).success(
 			function(response){
-				if(response.success){
-					$scope.reloadList();
-					$scope.selectIds=[];
+				if(response.flag){
+					$scope.reloadList();//刷新列表
+					$scope.selectIds = [];
 				}
 			}
 		);
@@ -77,28 +83,24 @@ app.controller('typeTemplateController' ,function($scope,$controller,typeTemplat
 		);
 	}
 
-	$scope.brandList = [];
-	$scope.specificationList = [];
-
-	//初始化品牌列表和规格列表
-	$scope.initBrandAndSpecification = function () {
-		brandService.selectBrandList().success(
-			function (response) {
-				$scope.brandList = {data:response};
-			}
-		);
-		specificationService.selectSpecificationList().success(
-			function (response) {
-				$scope.specificationList = {data:response};
-			}
-		);
+	$scope.brandList={data:[]}
+	// 查询关联的品牌信息:
+	$scope.specList={data:[]}
+	$scope.initBrandAndSpecification = function(){
+		brandService.selectBrandList().success(function(response){
+			$scope.brandList = {data:response};
+		});
+		specificationService.selectSpecificationList().success(function(response){
+			$scope.specList = {data:response};
+		});
+	}
+	//给扩展属性添加行
+	$scope.entity={customAttributeItems:[]};
+	$scope.addTableRow = function(){
+		$scope.entity.customAttributeItems.push({});
 	}
 
-	$scope.addTableRow = function () {
-		$scope.entity.customAttributeItemsList.push({});
-	}
-
-	$scope.removeTableRow = function (index) {
-		$scope.entity.customAttributeItemsList.splice(index,1);
+	$scope.deleteTableRow = function(index){
+		$scope.entity.customAttributeItems.splice(index,1);
 	}
 });
