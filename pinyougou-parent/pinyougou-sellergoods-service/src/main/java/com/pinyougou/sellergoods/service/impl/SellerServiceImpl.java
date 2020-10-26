@@ -163,4 +163,9 @@ public class SellerServiceImpl implements SellerService {
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
+	@Override
+	public int updateStatus(String sellerId, int status) {
+		return sellerMapper.updateSellerStatus(sellerId,status);
+	}
+
 }
