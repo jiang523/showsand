@@ -1,5 +1,5 @@
 //控制层
-app.controller('typeTemplateController' ,function($scope,$controller,brandService ,specificationService  ,typeTemplateService){
+app.controller('typeTemplateController' ,function($scope,$controller,brandService ,specificationService ,typeTemplateService){
 
 	$controller('baseController',{$scope:$scope});//继承
 
@@ -41,9 +41,9 @@ app.controller('typeTemplateController' ,function($scope,$controller,brandServic
 	$scope.save=function(){
 		var serviceObject;//服务层对象
 		if($scope.entity.id!=null){//如果有ID
-			serviceObject=typeTemplateService.update( $scope.entity ); //修改
+			serviceObject=typeTemplateService.update( $scope.entity); //修改
 		}else{
-			serviceObject=typeTemplateService.add( $scope.entity  );//增加
+			serviceObject=typeTemplateService.add( $scope.entity);//增加
 		}
 		serviceObject.success(
 			function(response){

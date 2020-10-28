@@ -1,6 +1,7 @@
 package com.pinyougou.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.pinyougou.pojo.TbTypeTemplate;
 import com.pinyougou.pojo.TbTypeTemplateExample;
@@ -28,4 +29,6 @@ public interface TbTypeTemplateMapper {
     int updateByPrimaryKeySelective(TbTypeTemplate record);
 
     int updateByPrimaryKey(TbTypeTemplate record);
+
+    List<Map> selectTypeTenplateList();
 }

@@ -1,5 +1,6 @@
 package com.pinyougou.manager.controller;
 import java.util.List;
+import java.util.Map;
 
 import com.pinyougou.pojo.TbTypeTemplate;
 import com.pinyougou.sellergoods.service.TypeTemplateService;
@@ -101,7 +102,7 @@ public class TypeTemplateController {
 
 		/**
 	 * 查询+分页
-	 * @param brand
+	 * @param
 	 * @param page
 	 * @param rows
 	 * @return
@@ -109,6 +110,11 @@ public class TypeTemplateController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbTypeTemplate typeTemplate, int page, int rows  ){
 		return typeTemplateService.findPage(typeTemplate, page, rows);
+	}
+
+	@RequestMapping("/selectTypeTemplateList")
+	public List<Map> selectTypeTemplateList(){
+		return typeTemplateService.selectTypeTemplateList();
 	}
 
 }

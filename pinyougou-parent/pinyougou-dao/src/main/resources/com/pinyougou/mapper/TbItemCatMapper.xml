@@ -83,7 +83,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from tb_item_cat
     where id = #{id,jdbcType=BIGINT}
@@ -98,10 +98,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+
   <insert id="insert" parameterType="com.pinyougou.pojo.TbItemCat" >
-    insert into tb_item_cat (id, parent_id, name, 
+    insert into tb_item_cat (parent_id, name,
       type_id)
-    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+    values (#{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
       #{typeId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.pinyougou.pojo.TbItemCat" >
@@ -163,7 +164,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update tb_item_cat
-    set id = #{record.id,jdbcType=BIGINT},
+    set
       parent_id = #{record.parentId,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       type_id = #{record.typeId,jdbcType=BIGINT}

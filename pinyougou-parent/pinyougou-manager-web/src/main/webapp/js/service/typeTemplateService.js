@@ -15,11 +15,11 @@ app.service('typeTemplateService',function($http){
 	}
 	//增加
 	this.add=function(entity){
-		return  $http.post('../typeTemplate/add.do',entity );
+		return  $http.post('../typeTemplate/add.do',entity);
 	}
 	//修改
 	this.update=function(entity){
-		return  $http.post('../typeTemplate/update.do',entity );
+		return  $http.post('../typeTemplate/update.do',entity);
 	}
 	//删除
 	this.dele=function(ids){
@@ -28,6 +28,10 @@ app.service('typeTemplateService',function($http){
 	//搜索
 	this.search=function(page,rows,searchEntity){
 		return $http.post('../typeTemplate/search.do?page='+page+"&rows="+rows, searchEntity);
+	}
+
+	this.selectTypeTemplateList = function () {
+		return $http.get('../typeTemplate/selectTypeTemplateList.do');
 	}
 
 

@@ -209,6 +209,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-
-
+  <select id="selectTypeTenplateList" resultType="java.util.Map">
+    select id,name as text from tb_type_template
+    </select>
 </mapper>
