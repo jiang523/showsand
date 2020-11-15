@@ -1,5 +1,5 @@
  //控制层
-app.controller('goodsController' ,function($scope,$controller   ,goodsService){
+app.controller('goodsController' ,function($scope,$controller,goodsService,uploadService){
 
 	$controller('baseController',{$scope:$scope});//继承
 
@@ -72,6 +72,18 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService){
 				$scope.paginationConf.totalItems=response.total;//更新总记录数
 			}
 		);
+	}
+
+	$scope.uploadFile = function (id) {
+		uploadService.uploadFile().success(
+			function (response) {
+				if(response.success){
+					$scope.image_entity.url = response.message;
+				}else {
+					alert(response.message)
+				}
+			}
+		)
 	}
 
 });
