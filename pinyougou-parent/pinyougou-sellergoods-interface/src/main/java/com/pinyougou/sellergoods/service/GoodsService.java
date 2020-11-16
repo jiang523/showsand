@@ -2,7 +2,7 @@ package com.pinyougou.sellergoods.service;
 import java.util.List;
 import com.pinyougou.pojo.TbGoods;
 
-import entity.Goods;
+import com.pinyougou.pojogroup.Goods;
 import entity.PageResult;
 /**
  * 服务层接口

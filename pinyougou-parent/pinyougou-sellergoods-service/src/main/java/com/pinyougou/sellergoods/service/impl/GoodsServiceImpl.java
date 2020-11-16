@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.pinyougou.mapper.TbGoodsDescMapper;
 import com.pinyougou.pojo.TbGoodsDesc;
-import entity.Goods;
+import com.pinyougou.pojogroup.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
@@ -55,12 +55,12 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public void add(Goods goods) {
         //设置商品为未审核状态
-        goods.getTbGoods().setAuditStatus("0");
+        goods.getGoods().setAuditStatus("0");
         //插入基本信息
-        goodsMapper.insert(goods.getTbGoods());
+        goodsMapper.insert(goods.getGoods());
         //将基本表的id给扩展表id
-        goods.getTbGoodsDesc().setGoodsId(goods.getTbGoods().getId());
-        goodsDescMapper.insert(goods.getTbGoodsDesc());
+        goods.getGoodsDesc().setGoodsId(goods.getGoods().getId());
+        goodsDescMapper.insert(goods.getGoodsDesc());
     }
 
 

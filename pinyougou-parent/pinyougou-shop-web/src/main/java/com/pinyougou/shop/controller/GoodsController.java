@@ -1,18 +1,17 @@
 package com.pinyougou.shop.controller;
+import java.util.List;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.pinyougou.pojo.TbGoods;
-import com.pinyougou.sellergoods.service.GoodsService;
-import entity.Goods;
-import entity.PageResult;
-import entity.Result;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.pinyougou.pojo.TbGoods;
+import com.pinyougou.pojogroup.Goods;
+import com.pinyougou.sellergoods.service.GoodsService;
 
-import java.util.List;
-
+import entity.PageResult;
+import entity.Result;
 /**
  * controller
  * @author Administrator
@@ -53,7 +52,8 @@ public class GoodsController {
 	public Result add(@RequestBody Goods goods){
 		//获取商家ID
 		String sellerId = SecurityContextHolder.getContext().getAuthentication().getName();
-		goods.getTbGoods().setSellerId(sellerId);
+		goods.getGoods().setSellerId(sellerId);//设置商家ID
+
 		try {
 			goodsService.add(goods);
 			return new Result(true, "增加成功");
@@ -105,9 +105,9 @@ public class GoodsController {
 		}
 	}
 
-		/**
+	/**
 	 * 查询+分页
-	 * @param
+	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
